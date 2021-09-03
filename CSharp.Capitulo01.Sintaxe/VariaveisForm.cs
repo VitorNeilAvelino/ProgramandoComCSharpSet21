@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CSharp.Capitulo01.Sintaxe
@@ -34,7 +27,7 @@ namespace CSharp.Capitulo01.Sintaxe
              
              */
 
-            int x = 42; 
+            int x = 42;
             int X = 10;
 
             long populacao = 2344545465654545455;
@@ -47,7 +40,7 @@ namespace CSharp.Capitulo01.Sintaxe
             char letra = 'a';
             bool aprovado = true; //false
             var dataNascimento = new DateTime(2000, 1, 1);
-            
+
             decimal valor = 13.6m;
             double outroValor = 2.2d;
             float distancia = 100.32f;
@@ -78,9 +71,9 @@ namespace CSharp.Capitulo01.Sintaxe
             //preco = 25;
 
             resultadoListBox.Items.Add("a = " + a/*.ToString()*/); // Shift + Ctrl + barra de espaço;
-            resultadoListBox.Items.Add(string.Concat("b = ", b)); 
+            resultadoListBox.Items.Add(string.Concat("b = ", b));
             //resultadoListBox.Items.Add(string.Format("c = {0} - d = {1}", c, d)); 
-            resultadoListBox.Items.Add(string.Format("c = {0}", c)); 
+            resultadoListBox.Items.Add(string.Format("c = {0}", c));
             resultadoListBox.Items.Add($"d = {d}");
 
             resultadoListBox.Items.Add($"c * d = {c * d}");
@@ -122,7 +115,7 @@ namespace CSharp.Capitulo01.Sintaxe
             a = 5;
             resultadoListBox.Items.Add("Exemplo de pós-incremental");
             resultadoListBox.Items.Add($"a = {a}");
-            resultadoListBox.Items.Add($"2 + a++ = {2 + a++}"); 
+            resultadoListBox.Items.Add($"2 + a++ = {2 + a++}");
             resultadoListBox.Items.Add($"a = {a}");
         }
 
@@ -159,7 +152,27 @@ namespace CSharp.Capitulo01.Sintaxe
             resultadoListBox.Items.Add($"w <= x || y == 16 = {w <= x || y == 16}");
             resultadoListBox.Items.Add($"x == z && x != z = {x == z && x != z}");
             resultadoListBox.Items.Add($"!(y > w) = {!(y > w)}");
+        }
 
+        private void ternariasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int ano;
+
+            ano = 2014;
+            resultadoListBox.Items.Add($"O ano {ano} é bissexto? {(ano % 4 == 0 ? "Sim" : "Não")}.");
+
+            ano = 2016;
+            resultadoListBox.Items.Add($"O ano {ano} é bissexto? {(DateTime.IsLeapYear(ano) ? "Sim" : "Não")}.");
+
+            var resposta = "";            
+            if (DateTime.IsLeapYear(ano))
+            {
+                resposta = "Sim";
+            }
+            else
+            {
+                resposta = "Não";
+            }
         }
     }
 }

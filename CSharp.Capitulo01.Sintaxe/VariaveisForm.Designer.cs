@@ -37,6 +37,7 @@ namespace CSharp.Capitulo01.Sintaxe
             this.incrementaisDecrementaisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.booleanasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logicasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ternariasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,7 +58,8 @@ namespace CSharp.Capitulo01.Sintaxe
             this.reduzidasToolStripMenuItem,
             this.incrementaisDecrementaisToolStripMenuItem,
             this.booleanasToolStripMenuItem,
-            this.logicasToolStripMenuItem});
+            this.logicasToolStripMenuItem,
+            this.ternariasToolStripMenuItem});
             this.operaçõesToolStripMenuItem.Name = "operaçõesToolStripMenuItem";
             this.operaçõesToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
             this.operaçõesToolStripMenuItem.Text = "&Operações";
@@ -106,6 +108,13 @@ namespace CSharp.Capitulo01.Sintaxe
             this.logicasToolStripMenuItem.Text = "&Lógicas";
             this.logicasToolStripMenuItem.Click += new System.EventHandler(this.logicasToolStripMenuItem_Click);
             // 
+            // ternariasToolStripMenuItem
+            // 
+            this.ternariasToolStripMenuItem.Name = "ternariasToolStripMenuItem";
+            this.ternariasToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
+            this.ternariasToolStripMenuItem.Text = "&Ternárias";
+            this.ternariasToolStripMenuItem.Click += new System.EventHandler(this.ternariasToolStripMenuItem_Click);
+            // 
             // VariaveisForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -134,6 +143,7 @@ namespace CSharp.Capitulo01.Sintaxe
         private System.Windows.Forms.ToolStripMenuItem incrementaisDecrementaisToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem booleanasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem logicasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ternariasToolStripMenuItem;
     }
 }
 
