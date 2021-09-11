@@ -1,25 +1,14 @@
-﻿namespace Fintech.Dominio.Entidades
-{
-    class ContaCorrente
-    {
-        public int Id { get; set; }
-        public Agencia Agencia { get; set; }
-        public int Numero { get; set; }
-        public string DigitoVerificador { get; set; }
-        public decimal Saldo { get; set; }
-        public Cliente Cliente { get; set; }
+﻿using System.Collections.Generic;
 
-        public void EfetuarOperacao(decimal valor, Operacao operacao)
+namespace Fintech.Dominio.Entidades
+{
+    public class ContaCorrente : Conta
+    {
+        public bool EmitirCheque { get; set; }
+
+        public override List<string> Validar()
         {
-            switch (operacao)
-            {
-                case Operacao.Deposito:
-                    Saldo += valor;
-                    break;
-                case Operacao.Saque:
-                    Saldo -= valor;
-                    break;
-            }
+            throw new System.NotImplementedException();
         }
     }
 }

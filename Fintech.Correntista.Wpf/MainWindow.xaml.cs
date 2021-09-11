@@ -23,7 +23,7 @@ namespace Fintech.Correntista.Wpf
     public partial class MainWindow : Window
     {
         public List<Cliente> Clientes { get; set; } = new List<Cliente>();
-
+        public Cliente ClienteSelecionado { get; set; }
         public MainWindow()
         {
             InitializeComponent();
@@ -37,6 +37,15 @@ namespace Fintech.Correntista.Wpf
             sexoComboBox.Items.Add(Sexo.Outro);
 
             clienteDataGrid.ItemsSource = Clientes;
+
+            var banco = new Banco() { Nome = "Banco Um", Numero = 154 };
+
+            bancoComboBox.Items.Add(banco);
+            bancoComboBox.Items.Add(new Banco { Nome = "Banco Dois", Numero = 157 });
+
+            tipoContaComboBox.Items.Add(TipoConta.ContaCorrente);
+            tipoContaComboBox.Items.Add(TipoConta.ContaEspecial);
+            tipoContaComboBox.Items.Add(TipoConta.Poupanca);
         }
 
         private void incluirClienteButton_Click(object sender, RoutedEventArgs e)
@@ -75,6 +84,32 @@ namespace Fintech.Correntista.Wpf
             numeroLogradouroTextBox.Clear();
             cidadeTextBox.Clear();
             cepTextBox.Clear();
+        }
+
+        private void SelecionarClienteButtonClick(object sender, RoutedEventArgs e)
+        {
+            var botaoClicado = (Button)sender;
+            var clienteSelecionado = botaoClicado.DataContext;
+
+            ClienteSelecionado = (Cliente)clienteSelecionado;
+
+            clienteTextBox.Text = ClienteSelecionado.ToString();
+            contasTabItem.Focus();
+        }
+
+        private void tipoContaComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var tipoConta = (TipoConta)tipoContaComboBox.SelectedItem;
+
+            if (tipoConta == TipoConta.ContaEspecial)
+            {
+                limiteDockPanel.Visibility = Visibility.Visible;
+                limiteTextBox.Focus();
+            }
+            else
+            {
+                limiteDockPanel.Visibility = Visibility.Collapsed;
+            }
         }
     }
 }

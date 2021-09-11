@@ -1,4 +1,4 @@
-﻿namespace Fintech.Dominio
+﻿namespace Fintech.Dominio.Entidades
 {
     public enum Sexo
     {
