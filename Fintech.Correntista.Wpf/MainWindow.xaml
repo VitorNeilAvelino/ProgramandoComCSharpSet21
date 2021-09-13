@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Fintech Correntista" MinHeight="600" MinWidth="800" WindowState="Maximized">
     <TabControl>
-        <TabItem Header="Clientes">
+        <TabItem Header="Clientes" Name="clientesTabItem">
             <TabControl TabStripPlacement="Left">
                 <TabItem Header="Pesquisa" Name="pesquisaClienteTabItem">
                     <DataGrid x:Name="clienteDataGrid" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True">
@@ -116,7 +116,8 @@
                     <TextBox Name="limiteTextBox" Width="150" HorizontalAlignment="Left" VerticalContentAlignment="Center" Height="23" TextWrapping="NoWrap" />
                 </DockPanel>
                 <DockPanel>
-                    <Button Name="incluirContaButton" Content="Incluir" Margin="120 2 0 0" Height="23" HorizontalAlignment="Left" Width="150"/>
+                    <Button Name="incluirContaButton" Content="Incluir" Margin="120 2 0 0" Height="23" HorizontalAlignment="Left" Width="150"
+                            Click="incluirContaButton_Click"/>
                 </DockPanel>
             </StackPanel>
         </TabItem>

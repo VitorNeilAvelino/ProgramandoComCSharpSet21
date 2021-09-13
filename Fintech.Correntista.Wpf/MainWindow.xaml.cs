@@ -24,6 +24,7 @@ namespace Fintech.Correntista.Wpf
     {
         public List<Cliente> Clientes { get; set; } = new List<Cliente>();
         public Cliente ClienteSelecionado { get; set; }
+
         public MainWindow()
         {
             InitializeComponent();
@@ -99,6 +100,8 @@ namespace Fintech.Correntista.Wpf
 
         private void tipoContaComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (tipoContaComboBox.SelectedIndex == -1) return;
+
             var tipoConta = (TipoConta)tipoContaComboBox.SelectedItem;
 
             if (tipoConta == TipoConta.ContaEspecial)
@@ -110,6 +113,53 @@ namespace Fintech.Correntista.Wpf
             {
                 limiteDockPanel.Visibility = Visibility.Collapsed;
             }
+        }
+
+        private void incluirContaButton_Click(object sender, RoutedEventArgs e)
+        {
+            Conta conta = null;
+
+            var agencia = new Agencia();
+            agencia.Banco = (Banco)bancoComboBox.SelectedItem;
+            agencia.Numero = Convert.ToInt32(numeroAgenciaTextBox.Text);
+            agencia.DigitoVerificador = Convert.ToInt32(dvAgenciaTextBox.Text);
+
+            var numero = Convert.ToInt32(numeroContaTextBox.Text);
+            var digitoVerificador = dvContaTextBox.Text;
+
+            switch ((TipoConta)tipoContaComboBox.SelectedItem)
+            {
+                case TipoConta.ContaCorrente:
+                    conta = new ContaCorrente(agencia, numero, digitoVerificador);
+                    break;
+                case TipoConta.ContaEspecial:
+                    var limite = Convert.ToDecimal(limiteTextBox.Text);
+                    conta = new ContaEspecial(agencia, numero, digitoVerificador, limite);
+                    break;
+                case TipoConta.Poupanca:
+                    conta = new Poupanca(agencia, numero, digitoVerificador);
+                    break;
+            }
+
+            ClienteSelecionado.Contas.Add(conta);
+
+            MessageBox.Show("Conta adicionada com sucesso.");
+            LimparControlesConta();
+
+            clienteDataGrid.Items.Refresh();
+            clientesTabItem.Focus();
+        }
+
+        private void LimparControlesConta()
+        {
+            clienteTextBox.Clear();
+            bancoComboBox.SelectedIndex = -1;
+            numeroAgenciaTextBox.Clear();
+            dvAgenciaTextBox.Clear();
+            numeroContaTextBox.Clear();
+            dvContaTextBox.Clear();
+            tipoContaComboBox.SelectedIndex = -1;
+            limiteTextBox.Clear();
         }
     }
 }
