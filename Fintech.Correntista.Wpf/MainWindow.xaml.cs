@@ -181,5 +181,31 @@ namespace Fintech.Correntista.Wpf
 
             operacoesTabItem.Focus();
         }
+
+        private void incluirOperacaoButton_Click(object sender, RoutedEventArgs e)
+        {
+            var conta = (Conta)contaComboBox.SelectedItem;
+            var operacao = (Operacao)operacaoComboBox.SelectedItem;
+            var valor = Convert.ToDecimal(valorTextBox.Text);
+
+            conta.EfetuarOperacao(valor, operacao);
+
+            AtualizarGridMovimentacao(conta);
+        }
+
+        private void AtualizarGridMovimentacao(Conta conta)
+        {
+            movimentacaoDataGrid.ItemsSource = conta.Movimentos;
+            movimentacaoDataGrid.Items.Refresh();
+
+            saldoTextBox.Text = conta.Saldo.ToString("C");
+        }
+
+        private void contaComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var conta = (Conta)contaComboBox.SelectedItem;
+
+            AtualizarGridMovimentacao(conta);
+        }
     }
 }
