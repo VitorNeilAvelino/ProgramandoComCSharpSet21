@@ -9,7 +9,7 @@
 
         public decimal Limite { get; set; }
 
-        public void EfetuarOperacao(decimal valor, Operacao operacao)
+        public override void EfetuarOperacao(decimal valor, Operacao operacao, decimal limite = 0)
         {
             base.EfetuarOperacao(valor, operacao, Limite);
         }

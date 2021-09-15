@@ -43,7 +43,7 @@ namespace Fintech.Dominio.Entidades
             return erros;
         }
 
-        public void EfetuarOperacao(decimal valor, Operacao operacao, decimal limite = 0)
+        public virtual void EfetuarOperacao(decimal valor, Operacao operacao, decimal limite = 0)
         {
             var sucesso = true;
 
