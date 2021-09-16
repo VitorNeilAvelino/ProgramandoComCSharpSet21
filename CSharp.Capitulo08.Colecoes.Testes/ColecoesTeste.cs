@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CSharp.Capitulo08.Colecoes.Testes
 {
@@ -60,6 +58,9 @@ namespace CSharp.Capitulo08.Colecoes.Testes
             {
                 Console.WriteLine($"{feriado.Key:d}: {feriado.Value}");
             }
+
+            Assert.IsTrue(feriados.ContainsKey(new DateTime(2022, 1, 1)));
+            Assert.IsTrue(feriados.ContainsValue("Natal"));
         }
     }
 }
