@@ -23,6 +23,7 @@ namespace Fintech.Correntista.Wpf
     /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly MovimentoRepositorio movimentoRepositorio = new(Properties.Settings.Default.CaminhoArquivoMovimento);
         public List<Cliente> Clientes { get; set; } = new List<Cliente>();
         public Cliente ClienteSelecionado { get; set; }
 
@@ -193,8 +194,8 @@ namespace Fintech.Correntista.Wpf
 
             if (movimento != null)
             {
-                var repositorio = new MovimentoRepositorio();
-                repositorio.Inserir(movimento); 
+                //var repositorio = new MovimentoRepositorio("");
+                movimentoRepositorio.Inserir(movimento); 
             }
 
             AtualizarGridMovimentacao(conta);
@@ -211,6 +212,8 @@ namespace Fintech.Correntista.Wpf
         private void contaComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var conta = (Conta)contaComboBox.SelectedItem;
+
+            conta.Movimentos = movimentoRepositorio.Selecionar(conta.Agencia.Numero, conta.Numero);
 
             AtualizarGridMovimentacao(conta);
         }
