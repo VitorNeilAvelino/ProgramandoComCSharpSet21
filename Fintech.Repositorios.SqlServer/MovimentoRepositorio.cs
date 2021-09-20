@@ -33,9 +33,18 @@ namespace Fintech.Repositorios.SqlServer
             throw new NotImplementedException();
         }
 
-        public Task<List<Movimento>> SelecionarAsync(int numeroAgencia, int numeroConta)
+        public async Task<List<Movimento>> SelecionarAsync(int numeroAgencia, int numeroConta)
         {
-            throw new NotImplementedException();
+            var instrucao = @"Select Id, Data, Operacao, Valor from Movimento
+                                            where IdConta=@numeroConta";
+
+            using (var conexao = new SqlConnection(stringConexao))
+            {
+                var movimentos = await conexao.QueryAsync<Movimento>(instrucao, new { numeroConta });
+
+                //return movimentos.ToList();
+                return movimentos.AsList();
+            }
         }
     }
 }

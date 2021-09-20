@@ -26,5 +26,16 @@ namespace Fintech.Repositorios.SqlServer.Tests
 
             repositorio.Inserir(movimento);
         }
+
+        [TestMethod()]
+        public void SelecionarAsyncTest()
+        {
+            var movimentos = repositorio.SelecionarAsync(22, 233).Result;
+
+            foreach (var movimento in movimentos)
+            {
+                Console.WriteLine($"{movimento.Data} - {movimento.Valor:c}");
+            }
+        }
     }
 }
