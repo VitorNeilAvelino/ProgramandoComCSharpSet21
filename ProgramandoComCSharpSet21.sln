@@ -27,9 +27,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fintech.Repositorios.Sistem
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fintech.Repositorios.SistemaArquivosTests", "Fintech.Repositorios.SistemaArquivosTests\Fintech.Repositorios.SistemaArquivosTests.csproj", "{051F7ABB-A8FC-4B22-8B68-B03E06FC9B9C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fintech.Repositorios.SqlServer", "Fintech.Repositorios.SqlServer\Fintech.Repositorios.SqlServer.csproj", "{FE4D2DA7-77DE-4840-BDDB-8A9034CC4032}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fintech.Repositorios.SqlServer", "Fintech.Repositorios.SqlServer\Fintech.Repositorios.SqlServer.csproj", "{FE4D2DA7-77DE-4840-BDDB-8A9034CC4032}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fintech.Repositorios.SqlServerTests", "Fintech.Repositorios.SqlServerTests\Fintech.Repositorios.SqlServerTests.csproj", "{BBA365AA-1F06-4949-9AF9-E7EFBDF96678}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fintech.Repositorios.SqlServerTests", "Fintech.Repositorios.SqlServerTests\Fintech.Repositorios.SqlServerTests.csproj", "{BBA365AA-1F06-4949-9AF9-E7EFBDF96678}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharp.Capitulo10.DelegatesLambda.Testes", "CSharp.Capitulo10.DelegatesLambda.Testes\CSharp.Capitulo10.DelegatesLambda.Testes.csproj", "{3C14AAD5-D70D-4E98-9C1A-EFFFB8AEE7C8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -89,6 +91,10 @@ Global
 		{BBA365AA-1F06-4949-9AF9-E7EFBDF96678}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BBA365AA-1F06-4949-9AF9-E7EFBDF96678}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BBA365AA-1F06-4949-9AF9-E7EFBDF96678}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C14AAD5-D70D-4E98-9C1A-EFFFB8AEE7C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C14AAD5-D70D-4E98-9C1A-EFFFB8AEE7C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C14AAD5-D70D-4E98-9C1A-EFFFB8AEE7C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C14AAD5-D70D-4E98-9C1A-EFFFB8AEE7C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
