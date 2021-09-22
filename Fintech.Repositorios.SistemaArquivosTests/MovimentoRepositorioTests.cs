@@ -54,5 +54,107 @@ namespace Fintech.Repositorios.SistemaArquivos.Tests
         {
             Console.WriteLine($"{movimento.Data} - {movimento.Guid} - {movimento.Operacao} - {movimento.Valor}");
         }
+
+        [TestMethod]
+        public void DelegatePredicateTeste()
+        {
+            var movimentos = repositorio.Selecionar(22, 233);
+
+            Predicate<Movimento> obterDepositos = m => m.Operacao == Operacao.Deposito;
+
+            //var depositos = movimentos.FindAll(EncontrarMovimentoDeposito);
+            //var depositos = movimentos.FindAll(obterDepositos);
+            var depositos = movimentos.FindAll(m => m.Operacao == Operacao.Deposito);
+
+            depositos.ForEach(d => Console.WriteLine(d.Valor));
+        }
+
+        private bool EncontrarMovimentoDeposito(Movimento m)
+        {
+            return m.Operacao == Operacao.Deposito;
+        }
+
+        [TestMethod]
+        public void DelegateFuncTeste()
+        {
+            var movimentos = repositorio.Selecionar(22, 233);
+
+            Func<Movimento, decimal> obterCampoValor = m => m.Valor;
+
+            //var totalDepositos = movimentos.Where(m => m.Operacao == Operacao.Deposito).Sum(RetornarCampoSoma);
+            //var totalDepositos = movimentos.Where(m => m.Operacao == Operacao.Deposito).Sum(obterCampoValor);
+            var totalDepositos = movimentos.Where(m => m.Operacao == Operacao.Deposito).Sum(mov => mov.Valor);
+
+            Console.WriteLine(totalDepositos);
+        }
+
+        private decimal RetornarCampoSoma(Movimento m)
+        {
+            return m.Valor;
+        }
+
+        [TestMethod]
+        public void OrderByTeste()
+        {
+            var movimentos = repositorio.Selecionar(22, 233)
+                .OrderBy(m => m.Valor)
+                .ThenBy(m => m.Operacao)
+                .ThenByDescending(m => m.Data);
+
+            //var primeiro = movimentos.First();
+            var primeiro = movimentos.FirstOrDefault();
+
+            Console.WriteLine(primeiro?.Valor.ToString());
+        }
+
+        [TestMethod]
+        public void CountTeste()
+        {
+            var qtdDepositos = repositorio.Selecionar(22, 233)
+                .Count(m => m.Operacao == Operacao.Deposito);
+
+            Console.WriteLine(qtdDepositos);
+        }
+
+        [TestMethod]
+        public void LikeTeste()
+        {
+            var movimentos = repositorio.Selecionar(22, 233)
+                .Where(m => m.Data.ToString().Contains("16/09/2021")).ToList();
+
+            movimentos.ForEach(m => Console.WriteLine(m.Data));
+        }
+
+        [TestMethod]
+        public void MinTeste()
+        {
+            var menorMovimento = repositorio.Selecionar(22, 233).Min(m => m.Valor);
+            //var menorMovimento = repositorio.Selecionar(22, 233).Min();
+
+            Console.WriteLine(menorMovimento);
+        }
+
+        [TestMethod]
+        public void SkipTakeTeste()
+        {
+            var movimentos = repositorio.Selecionar(22, 233).Skip(1).Take(1).ToList();
+
+            movimentos.ForEach(m => Console.WriteLine($"{m.Data} - {m.Valor}"));
+        }
+
+        [TestMethod]
+        public void GroupByTeste()
+        {
+            var agrupamento = repositorio.Selecionar(22, 233)
+                .GroupBy(m => m.Operacao)
+                .Select(g => new { Operacao = g.Key, Total = g.Sum(m => m.Valor)});
+
+            // var veiculo = { };
+
+            foreach (var item in agrupamento)
+            {
+                Console.WriteLine($"{item.Operacao}: {item.Total:c}");
+            }
+        }
     }
 }
